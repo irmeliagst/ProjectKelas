@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorTosca">#019DAA</color> // primary color
+    <color name="background">#FFF0F4F3</color>
+    <color name="buttontext">#FF50C2C9</color>
+    //indicator color
+    <color name="inactive">#FFC4C4C4</color>
+    <color name="active">#FF50C2C9</color>
+    <color name="purple_200">#C800FF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="teal_200">#56FFCF</color>
+</resources>
