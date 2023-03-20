@@ -12,15 +12,16 @@
         android:text="Ini Halaman Pertama"
         android:textColor="@color/white"
         android:textSize="25sp"></TextView>
+
     <Button
         android:id="@+id/tombolPertama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginLeft="20dp"
-        android:text="Halaman Pertama"
         android:layout_marginRight="20dp"
         android:background="@color/teal_200"
+        android:text="Halaman Pertama"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"></Button>

@@ -23,10 +23,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE);
-        pref = MainActivity.this.getSharedPreferences("data", MODE_PRIVATE);
-        if (sharedPreferences.getAll().size()>0){
-            setContentView(R.layout.activity_second);
+        pref = getSharedPreferences("Login", MODE_PRIVATE);
+        if (pref.contains("username")){
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+            finish(); // tambahkan kode ini agar pengguna tidak bisa kembali ke halaman login
         }
         setContentView(R.layout.activity_main);
         editusername = findViewById(R.id.editusername);
@@ -37,27 +38,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String username = editusername.getText().toString();
-                String password = editpassword.getText().toString();
-                SharedPreferences sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.apply();
-                if (username.equals("amel") && password.equals("1a")) {
-                    Toast.makeText(MainActivity.this, "login berhasil", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                    // untuk mengarahkan halaman 1 ke halaman 2
-                    intent.putExtra("username", username);
-                    intent.putExtra("password", password);
-//                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("password",password);
-                    editor.putString("username",username);
-                    editor.putBoolean("status_login", true);
-                    editor.apply();
+                String pass = editpassword.getText().toString();
+                if (username.equals("admin") && pass.equals("admin")){
+                    SharedPreferences.Editor editor = pref.edit();
+                    Toast.makeText(MainActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
+                    editor.putString("username", username); // ubah "email" menjadi "username"
+                    editor.putString("password", pass); // ubah "pass" menjadi "password"
                     editor.commit();
+                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                     startActivity(intent);
-                    finish();
-                    //agar tidak kembali ke halaman sebelumnya
-                } else {
-                    Toast.makeText(MainActivity.this, "login gagal", Toast.LENGTH_LONG).show();
+                    finish(); // tambahkan kode ini agar pengguna tidak bisa kembali ke halaman login
+                }else {
+                    Toast.makeText(MainActivity.this, "Login gagal", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -69,4 +61,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }
